@@ -7,6 +7,7 @@ import { PuzzleProvider } from "@/lib/puzzle-context"
 import { ThemeProvider } from "next-themes"
 import { Suspense } from "react"
 import "./globals.css"
+import { Header } from "@/components/header"
 
 export const metadata: Metadata = {
   title: "v0 App",
@@ -25,6 +26,7 @@ export default function RootLayout({
         <Suspense fallback={null}>
           <PuzzleProvider>
             <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
+              <Header />         
               {children}
             </ThemeProvider>
           </PuzzleProvider>

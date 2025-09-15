@@ -6,8 +6,6 @@ import { UnifiedPicture } from "@/components/unified-picture"
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-background">
-      <Header />
-
       <main className="container mx-auto px-4 py-8">
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-6xl font-bold text-primary mb-6 text-balance">Chủ Nghĩa Xã Hội Khoa Học</h1>

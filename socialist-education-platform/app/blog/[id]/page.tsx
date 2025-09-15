@@ -18,7 +18,6 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
 
   return (
     <div className="min-h-screen bg-background">
-      <Header />
       <BlogPost post={post} />
     </div>
   )
