@@ -2,7 +2,7 @@ import type { BlogPost } from "../types"
 
 export const blogPosts: BlogPost[] = [
   {
-    id: "foundations",
+    id: "cq-1",
     title: "Nền Tảng Lý Luận của Chủ Nghĩa Xã Hội Khoa Học",
     description:
       "Tìm hiểu về cơ sở lý luận và khoa học của chủ nghĩa xã hội, từ chủ nghĩa duy vật lịch sử đến chủ nghĩa duy vật biện chứng.",
@@ -49,7 +49,7 @@ Nền tảng lý luận vững chắc này đã tạo ra một học thuyết kh
     `,
   },
   {
-    id: "class-struggle",
+    id: "cq-2",
     title: "Đấu Tranh Giai Cấp và Cách Mạng Xã Hội",
     description:
       "Khám phá vai trò của đấu tranh giai cấp trong lịch sử và sứ mệnh lịch sử của giai cấp công nhân trong cách mạng xã hội chủ nghĩa.",
@@ -107,7 +107,7 @@ Trong thời đại ngày nay, đấu tranh giai cấp vẫn tồn tại nhưng 
     `,
   },
   {
-    id: "unity-solidarity",
+    id: "cq-3",
     title: "Đoàn Kết và Thống Nhất trong Xây Dựng Xã Hội Mới",
     description:
       "Tầm quan trọng của đoàn kết quốc tế, thống nhất trong đảng và sự đoàn kết của nhân dân trong sự nghiệp xây dựng xã hội chủ nghĩa.",
@@ -178,7 +178,7 @@ Lịch sử đã chứng minh rằng đoàn kết và thống nhất là sức m
     `,
   },
   {
-    id: "global-application",
+    id: "cq-4",
     title: "Vận Dụng Sáng Tạo Chủ Nghĩa Xã Hội Khoa Học",
     description:
       "Cách thức vận dụng sáng tạo chủ nghĩa xã hội khoa học vào điều kiện cụ thể của từng quốc gia, dân tộc và thời đại.",
