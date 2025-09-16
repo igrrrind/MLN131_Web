@@ -1,52 +1,14 @@
-import type { BlogPost } from "../types"
+import type { BlogPost } from "../types";
 
 export const blogPosts: BlogPost[] = [
   {
     id: "cq-1",
-    title: "Nền Tảng Lý Luận của Chủ Nghĩa Xã Hội Khoa Học",
+    title: "Nền sản xuất Việt Nam trong thời kỳ quá độ lên CNXH",
     description:
-      "Tìm hiểu về cơ sở lý luận và khoa học của chủ nghĩa xã hội, từ chủ nghĩa duy vật lịch sử đến chủ nghĩa duy vật biện chứng.",
+      "Phân tích về vai trò của Cách mạng Công nghiệp 4.0 trong việc xây dựng nền sản xuất xã hội chủ nghĩa hiện đại",
     pieceId: 1,
-    readingTime: 15,
-    content: `
-# Nền Tảng Lý Luận của Chủ Nghĩa Xã Hội Khoa Học
-
-## Giới Thiệu
-
-Chủ nghĩa xã hội khoa học không phải là một học thuyết trừu tượng mà là một hệ thống lý luận khoa học được xây dựng trên nền tảng vững chắc của triết học Mác-Lênin.
-
-## Chủ Nghĩa Duy Vật Biện Chứng
-
-### Khái Niệm Cơ Bản
-Chủ nghĩa duy vật biện chứng là phương pháp luận khoa học để nhận thức thế giới. Nó khẳng định:
-- Thế giới là vật chất và tồn tại khách quan
-- Vận động và phát triển là quy luật tuyệt đối
-- Mâu thuẫn là động lực của sự phát triển
-
-### Ý Nghĩa Thực Tiễn
-Phương pháp này giúp chúng ta:
-- Nhận thức đúng đắn về quy luật phát triển xã hội
-- Tìm ra con đường cách mạng phù hợp
-- Xây dựng chiến lược phát triển bền vững
-
-## Chủ Nghĩa Duy Vật Lịch Sử
-
-### Quy Luật Phát Triển Xã Hội
-Chủ nghĩa duy vật lịch sử khám phá ra:
-- Lực lượng sản xuất quyết định quan hệ sản xuất
-- Cơ sở hạ tầng quyết định kiến trúc thượng tầng
-- Đấu tranh giai cấp là động lực phát triển xã hội
-
-### Sự Tất Yếu Lịch Sử
-Sự chuyển đổi từ chủ nghĩa tư bản sang chủ nghĩa xã hội là:
-- Quy luật khách quan của lịch sử
-- Kết quả của mâu thuẫn không thể hòa giải
-- Xu hướng tất yếu của tiến bộ xã hội
-
-## Kết Luận
-
-Nền tảng lý luận vững chắc này đã tạo ra một học thuyết khoa học, không chỉ giải thích thế giới mà còn chỉ ra con đường thay đổi thế giới theo hướng tiến bộ.
-    `,
+    readingTime: 20,
+    content: ``,
   },
   {
     id: "cq-2",
@@ -276,4 +238,4 @@ Từ năm 1986, Việt Nam:
 Vận dụng sáng tạo chủ nghĩa xã hội khoa học là nghệ thuật kết hợp giữa tính khoa học của lý luận và tính sáng tạo của thực tiễn, đòi hỏi sự thông minh, dũng cảm và kiên trì của mỗi dân tộc.
     `,
   },
-]
+];
