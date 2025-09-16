@@ -1,27 +1,27 @@
-"use client"
+"use client";
 
-import type React from "react"
-import { createContext, useContext, useEffect, useState } from "react"
-import type { PuzzlePiece, UserProgress, Achievement } from "./types"
-import { questionsData } from "./data/questions"
+import type React from "react";
+import { createContext, useContext, useEffect, useState } from "react";
+import type { PuzzlePiece, UserProgress, Achievement } from "./types";
+import { questionsData } from "./data/questions";
 
 interface PuzzleContextType {
-  pieces: PuzzlePiece[]
-  userProgress: UserProgress
-  unlockPiece: (pieceId: number) => void
-  toggleCheatMode: () => void
-  resetProgress: () => void
-  isAllUnlocked: boolean
-  trackQuestionAnswer: (isCorrect: boolean) => void
-  sessionStartTime: Date | null
+  pieces: PuzzlePiece[];
+  userProgress: UserProgress;
+  unlockPiece: (pieceId: number) => void;
+  toggleCheatMode: () => void;
+  resetProgress: () => void;
+  isAllUnlocked: boolean;
+  trackQuestionAnswer: (isCorrect: boolean) => void;
+  sessionStartTime: Date | null;
 }
 
-const PuzzleContext = createContext<PuzzleContextType | undefined>(undefined)
+const PuzzleContext = createContext<PuzzleContextType | undefined>(undefined);
 
 const initialPieces: PuzzlePiece[] = [
   {
     id: 1,
-    title: "Nền Tảng Lý Luận",
+    title: "CQ1",
     description: "Cơ sở khoa học của chủ nghĩa xã hội",
     color: "knowledge-blue",
     unlocked: false,
@@ -39,7 +39,7 @@ const initialPieces: PuzzlePiece[] = [
   },
   {
     id: 3,
-    title: "Đoàn Kết Thống Nhất",
+    title: "CQ3",
     description: "Sức mạnh của sự đoàn kết",
     color: "unity-purple",
     unlocked: false,
@@ -55,7 +55,7 @@ const initialPieces: PuzzlePiece[] = [
     questions: questionsData[4],
     blogId: "global-application",
   },
-]
+];
 
 const initialProgress: UserProgress = {
   unlockedPieces: [],
@@ -66,7 +66,7 @@ const initialProgress: UserProgress = {
   correctAnswers: 0,
   streakCount: 0,
   achievements: [],
-}
+};
 
 const achievementDefinitions: Omit<Achievement, "unlockedAt">[] = [
   {
@@ -118,35 +118,41 @@ const achievementDefinitions: Omit<Achievement, "unlockedAt">[] = [
     icon: "🗺️",
     type: "exploration",
   },
-]
+];
 
 export function PuzzleProvider({ children }: { children: React.ReactNode }) {
-  const [pieces, setPieces] = useState<PuzzlePiece[]>(initialPieces)
-  const [userProgress, setUserProgress] = useState<UserProgress>(initialProgress)
-  const [sessionStartTime, setSessionStartTime] = useState<Date | null>(null)
+  const [pieces, setPieces] = useState<PuzzlePiece[]>(initialPieces);
+  const [userProgress, setUserProgress] =
+    useState<UserProgress>(initialProgress);
+  const [sessionStartTime, setSessionStartTime] = useState<Date | null>(null);
 
   useEffect(() => {
-    const saved = localStorage.getItem("socialist-education-progress")
+    const saved = localStorage.getItem("socialist-education-progress");
     if (saved) {
-      const progress = JSON.parse(saved)
-      setUserProgress(progress)
+      const progress = JSON.parse(saved);
+      setUserProgress(progress);
 
       setPieces((prev) =>
         prev.map((piece) => ({
           ...piece,
-          unlocked: progress.unlockedPieces.includes(piece.id) || progress.cheatModeEnabled,
-        })),
-      )
+          unlocked:
+            progress.unlockedPieces.includes(piece.id) ||
+            progress.cheatModeEnabled,
+        }))
+      );
     }
-  }, [])
+  }, []);
 
   useEffect(() => {
-    localStorage.setItem("socialist-education-progress", JSON.stringify(userProgress))
-  }, [userProgress])
+    localStorage.setItem(
+      "socialist-education-progress",
+      JSON.stringify(userProgress)
+    );
+  }, [userProgress]);
 
   const unlockPiece = (pieceId: number) => {
     if (!userProgress.unlockedPieces.includes(pieceId)) {
-      const now = new Date()
+      const now = new Date();
       const newProgress = {
         ...userProgress,
         unlockedPieces: [...userProgress.unlockedPieces, pieceId],
@@ -154,64 +160,78 @@ export function PuzzleProvider({ children }: { children: React.ReactNode }) {
           ...userProgress.pieceUnlockTimes,
           [pieceId]: now,
         },
-      }
+      };
 
       if (newProgress.unlockedPieces.length === 4) {
-        newProgress.completedAt = now
+        newProgress.completedAt = now;
 
         if (sessionStartTime) {
-          newProgress.totalTime = Math.floor((now.getTime() - sessionStartTime.getTime()) / 1000)
+          newProgress.totalTime = Math.floor(
+            (now.getTime() - sessionStartTime.getTime()) / 1000
+          );
         }
       }
 
-      const newAchievements = checkAchievements(newProgress)
-      newProgress.achievements = [...userProgress.achievements, ...newAchievements]
+      const newAchievements = checkAchievements(newProgress);
+      newProgress.achievements = [
+        ...userProgress.achievements,
+        ...newAchievements,
+      ];
 
-      setUserProgress(newProgress)
-      setPieces((prev) => prev.map((piece) => (piece.id === pieceId ? { ...piece, unlocked: true } : piece)))
+      setUserProgress(newProgress);
+      setPieces((prev) =>
+        prev.map((piece) =>
+          piece.id === pieceId ? { ...piece, unlocked: true } : piece
+        )
+      );
     }
-  }
+  };
 
   const checkAchievements = (progress: UserProgress): Achievement[] => {
-    const newAchievements: Achievement[] = []
-    const existingIds = progress.achievements.map((a) => a.id)
+    const newAchievements: Achievement[] = [];
+    const existingIds = progress.achievements.map((a) => a.id);
 
     achievementDefinitions.forEach((def) => {
-      if (existingIds.includes(def.id)) return
+      if (existingIds.includes(def.id)) return;
 
-      let shouldUnlock = false
+      let shouldUnlock = false;
 
       switch (def.id) {
         case "first-unlock":
-          shouldUnlock = progress.unlockedPieces.length >= 1
-          break
+          shouldUnlock = progress.unlockedPieces.length >= 1;
+          break;
         case "half-complete":
-          shouldUnlock = progress.unlockedPieces.length >= 2
-          break
+          shouldUnlock = progress.unlockedPieces.length >= 2;
+          break;
         case "almost-there":
-          shouldUnlock = progress.unlockedPieces.length >= 3
-          break
+          shouldUnlock = progress.unlockedPieces.length >= 3;
+          break;
         case "master":
-          shouldUnlock = progress.unlockedPieces.length >= 4
-          break
+          shouldUnlock = progress.unlockedPieces.length >= 4;
+          break;
         case "speed-demon":
-          shouldUnlock = progress.totalTime > 0 && progress.totalTime <= 300 && progress.unlockedPieces.length === 4
-          break
+          shouldUnlock =
+            progress.totalTime > 0 &&
+            progress.totalTime <= 300 &&
+            progress.unlockedPieces.length === 4;
+          break;
         case "perfectionist":
-          shouldUnlock = progress.questionsAnswered > 0 && progress.correctAnswers === progress.questionsAnswered
-          break
+          shouldUnlock =
+            progress.questionsAnswered > 0 &&
+            progress.correctAnswers === progress.questionsAnswered;
+          break;
       }
 
       if (shouldUnlock) {
         newAchievements.push({
           ...def,
           unlockedAt: new Date(),
-        })
+        });
       }
-    })
+    });
 
-    return newAchievements
-  }
+    return newAchievements;
+  };
 
   const trackQuestionAnswer = (isCorrect: boolean) => {
     setUserProgress((prev) => ({
@@ -219,32 +239,45 @@ export function PuzzleProvider({ children }: { children: React.ReactNode }) {
       questionsAnswered: prev.questionsAnswered + 1,
       correctAnswers: prev.correctAnswers + (isCorrect ? 1 : 0),
       streakCount: isCorrect ? prev.streakCount + 1 : 0,
-    }))
-  }
+    }));
+  };
 
   useEffect(() => {
-    if (!sessionStartTime && userProgress.unlockedPieces.length === 0 && !userProgress.cheatModeEnabled) {
-      setSessionStartTime(new Date())
+    if (
+      !sessionStartTime &&
+      userProgress.unlockedPieces.length === 0 &&
+      !userProgress.cheatModeEnabled
+    ) {
+      setSessionStartTime(new Date());
     }
-  }, [sessionStartTime, userProgress.unlockedPieces.length, userProgress.cheatModeEnabled])
+  }, [
+    sessionStartTime,
+    userProgress.unlockedPieces.length,
+    userProgress.cheatModeEnabled,
+  ]);
 
   const toggleCheatMode = () => {
-    const newCheatMode = !userProgress.cheatModeEnabled
-    setUserProgress((prev) => ({ ...prev, cheatModeEnabled: newCheatMode }))
+    const newCheatMode = !userProgress.cheatModeEnabled;
+    setUserProgress((prev) => ({ ...prev, cheatModeEnabled: newCheatMode }));
     setPieces((prev) =>
-      prev.map((piece) => ({ ...piece, unlocked: newCheatMode || userProgress.unlockedPieces.includes(piece.id) })),
-    )
-  }
+      prev.map((piece) => ({
+        ...piece,
+        unlocked:
+          newCheatMode || userProgress.unlockedPieces.includes(piece.id),
+      }))
+    );
+  };
 
   const resetProgress = () => {
-    const resetProgress = initialProgress
-    setUserProgress(resetProgress)
-    setPieces(initialPieces)
-    setSessionStartTime(null)
-    localStorage.removeItem("socialist-education-progress")
-  }
+    const resetProgress = initialProgress;
+    setUserProgress(resetProgress);
+    setPieces(initialPieces);
+    setSessionStartTime(null);
+    localStorage.removeItem("socialist-education-progress");
+  };
 
-  const isAllUnlocked = userProgress.unlockedPieces.length === 4 || userProgress.cheatModeEnabled
+  const isAllUnlocked =
+    userProgress.unlockedPieces.length === 4 || userProgress.cheatModeEnabled;
 
   return (
     <PuzzleContext.Provider
@@ -261,13 +294,13 @@ export function PuzzleProvider({ children }: { children: React.ReactNode }) {
     >
       {children}
     </PuzzleContext.Provider>
-  )
+  );
 }
 
 export function usePuzzle() {
-  const context = useContext(PuzzleContext)
+  const context = useContext(PuzzleContext);
   if (context === undefined) {
-    throw new Error("usePuzzle must be used within a PuzzleProvider")
+    throw new Error("usePuzzle must be used within a PuzzleProvider");
   }
-  return context
+  return context;
 }
