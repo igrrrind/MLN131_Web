@@ -1,53 +1,57 @@
-"use client"
+"use client";
 
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
-import { usePuzzle } from "@/lib/puzzle-context"
-import { RotateCcw, Eye, EyeOff, BookOpen, Home } from "lucide-react"
-import Link from "next/link"
-import { useState } from "react"
-import { CheatModeDialog } from "./cheat-mode-dialog"
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { usePuzzle } from "@/lib/puzzle-context";
+import Link from "next/link";
+import { useState } from "react";
+import { CheatModeDialog } from "./cheat-mode-dialog";
+import Image from "next/image";
 
 export function Header() {
-  const { userProgress, toggleCheatMode, resetProgress } = usePuzzle()
-  const [showCheatDialog, setShowCheatDialog] = useState(false)
+  const { userProgress, toggleCheatMode, resetProgress } = usePuzzle();
+  const [showCheatDialog, setShowCheatDialog] = useState(false);
 
   const handleCheatToggle = () => {
     if (!userProgress.cheatModeEnabled) {
-      setShowCheatDialog(true)
+      setShowCheatDialog(true);
     } else {
-      toggleCheatMode()
+      toggleCheatMode();
     }
-  }
+  };
 
   return (
     <>
-      <header className="border-b bg-card sticky top-0 z-40 backdrop-blur-sm bg-card/95">
-        <div className="container mx-auto px-4 py-4">
+      <header className="border-b bg-primary sticky top-0 z-40 font-gilroy ">
+        <div className="container mx-auto px-4 py-2">
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-4">
-              <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
-                <div className="w-8 h-8 bg-blue-800 rounded-lg flex items-center justify-center text-white font-bold shadow-md border border-blue-900">
-                  XH
-                </div>
-                <h1 className="text-xl font-bold text-primary hidden sm:block">Giáo Dục Xã Hội Chủ Nghĩa</h1>
-              </Link>
-            </div>
 
-            <nav className="hidden md:flex items-center gap-4">
-              <Link href="/">
-                <Button variant="ghost" size="sm" className="gap-2">
-                  <Home className="h-4 w-4" />
-                  Puzzle
-                </Button>
+            <nav className="hidden md:flex items-center gap-6 text-lg">
+              <Link href="/" className="text-white uppercase relative group">
+                <span className="hover:opacity-80 font-bold">PUZZLE</span>
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all group-hover:w-full"></span>
               </Link>
-              <Link href="/blog">
-                <Button variant="ghost" size="sm" className="gap-2">
-                  <BookOpen className="h-4 w-4" />
-                  Thư viện
-                </Button>
+              <Link
+                href="/blog"
+                className="text-white uppercase relative group"
+              >
+                <span className="hover:opacity-80 font-bold py-2">THƯ VIỆN</span>
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all group-hover:w-full"></span>
               </Link>
             </nav>
+
+            <div className="flex items-center gap-2">
+              <div className="bg-white rounded-full p-1"><Image src={"images/4.png"} width={25} height={25} alt="socialism logo" />
+              </div>
+              <Link
+                href="/"
+                className="flex items-center gap-2 hover:opacity-80 transition-opacity"
+              >
+                <h1 className="text-xl font-bold text-white hidden sm:block uppercase">
+                  Dân chủ XHCN & Nhà nước XHCN
+                </h1>
+              </Link>
+            </div>
 
             <div className="flex items-center gap-2">
               {userProgress.cheatModeEnabled && (
@@ -56,20 +60,22 @@ export function Header() {
                 </Badge>
               )}
 
-              <Button
-                variant={userProgress.cheatModeEnabled ? "destructive" : "outline"}
-                size="sm"
+              <button
+                className="text-white uppercase relative group"
                 onClick={handleCheatToggle}
-                className="gap-2"
               >
-                {userProgress.cheatModeEnabled ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
-                <span className="hidden sm:inline">{userProgress.cheatModeEnabled ? "Tắt Cheat" : "Cheat"}</span>
-              </Button>
-
-              <Button variant="outline" size="sm" onClick={resetProgress} className="gap-2 bg-transparent">
-                <RotateCcw className="h-4 w-4" />
-                <span className="hidden sm:inline">Đặt Lại</span>
-              </Button>
+                <span className="hover:opacity-80 font-bold">
+                  {userProgress.cheatModeEnabled ? "TẮT CHEAT" : "CHEAT"}
+                </span>
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all group-hover:w-full"></span>
+              </button>
+              <button
+                className="text-white uppercase relative group"
+                onClick={resetProgress}
+              >
+                <span className="hover:opacity-80 font-bold">ĐẶT LẠI</span>
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all group-hover:w-full"></span>
+              </button>
             </div>
           </div>
         </div>
@@ -79,10 +85,10 @@ export function Header() {
         isOpen={showCheatDialog}
         onClose={() => setShowCheatDialog(false)}
         onConfirm={() => {
-          toggleCheatMode()
-          setShowCheatDialog(false)
+          toggleCheatMode();
+          setShowCheatDialog(false);
         }}
       />
     </>
-  )
+  );
 }

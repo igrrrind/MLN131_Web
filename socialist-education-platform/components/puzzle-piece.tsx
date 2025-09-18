@@ -3,97 +3,82 @@
 import { useState } from "react"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
-import { Lock, Unlock, BookOpen } from "lucide-react"
+import { ArrowRight, Lock, Unlock } from "lucide-react"
 import { usePuzzle } from "@/lib/puzzle-context"
 import type { PuzzlePiece } from "@/lib/types"
 import { QuestionModal } from "./question-modal"
 import Link from "next/link"
+import Image from "next/image"
+import { merriweather } from "@/lib/fonts"
 
 interface PuzzlePieceProps {
   piece: PuzzlePiece
+  rotation?: number // Rotation angle in degrees
 }
 
-export function PuzzlePieceComponent({ piece }: PuzzlePieceProps) {
+export function PuzzlePieceComponent({ piece, rotation = 0 }: PuzzlePieceProps) {
   const [showQuestions, setShowQuestions] = useState(false)
   const { userProgress } = usePuzzle()
 
-  const getColorClasses = (color: string) => {
-    switch (color) {
-      case "knowledge-blue":
-        return "bg-blue-100 border-blue-300 text-blue-900 hover:bg-blue-200"
-      case "revolution-red":
-        return "bg-red-100 border-red-300 text-red-900 hover:bg-red-200"
-      case "unity-purple":
-        return "bg-purple-100 border-purple-300 text-purple-900 hover:bg-purple-200"
-      case "progress-green":
-        return "bg-green-100 border-green-300 text-green-900 hover:bg-green-200"
-      default:
-        return "bg-gray-100 border-gray-300 text-gray-900 hover:bg-gray-200"
-    }
-  }
-
-  const getBadgeColor = (color: string) => {
-    switch (color) {
-      case "knowledge-blue":
-        return "bg-blue-600 text-white"
-      case "revolution-red":
-        return "bg-red-600 text-white"
-      case "unity-purple":
-        return "bg-purple-600 text-white"
-      case "progress-green":
-        return "bg-green-600 text-white"
-      default:
-        return "bg-gray-600 text-white"
-    }
-  }
+  const isUnlocked = userProgress.unlockedPieces.includes(piece.id)
 
   return (
     <>
-      <Card
-        className={`relative transition-all duration-300 cursor-pointer ${
-          piece.unlocked
-            ? `${getColorClasses(piece.color)} puzzle-unlock`
-            : "bg-muted border-muted-foreground/20 opacity-60"
-        }`}
-        onClick={() => !piece.unlocked && setShowQuestions(true)}
+      <Card 
+        className="relative bg-transparent border-none hover:shadow-none shadow-none overflow-hidden cursor-pointer hover:shadow-lg transition-all duration-300"
+        onClick={() => !isUnlocked && setShowQuestions(true)}
       >
-        <CardContent className="p-4 text-center">
-          <div className="flex items-center justify-center mb-3">
-            {piece.unlocked ? (
-              <Unlock className="h-8 w-8 text-current" />
-            ) : (
-              <Lock className="h-8 w-8 text-muted-foreground" />
-            )}
-          </div>
+        <CardContent className="p-4 w-full">
+          <div className="flex gap-4">
+            {/* Left side - Image */}
+            <div className="relative w-[300px] h-[300px] flex-shrink-0">
+              <Image
+                src="/images/3.png"
+                alt={piece.title}
+                width={280}
+                height={280}
+                className="rounded-lg object-cover"
+                style={{ transform: `rotate(${rotation}deg)` }}
+              />
+            </div>
 
-          <h3 className="font-semibold text-sm mb-2">{piece.title}</h3>
-          <p className="text-xs text-current/80 mb-3">{piece.description}</p>
+            {/* Right side - Content */}
+            <div className="flex-1">
+              <h3 className={`font-semibold text-lg  mb-2 ${merriweather.className}`}>{piece.title}</h3>
+              <p className="text-sm text-gray-600 mb-4">{piece.description}</p>
+              
+              {/* Unlock button */}
+              <div className="space-y-2">
+                <Button
+                  size="sm"
+                  variant={isUnlocked ? "outline" : "default"}
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    !isUnlocked && setShowQuestions(true)
+                  }}
+                  disabled={userProgress.cheatModeEnabled}
+                  className="w-full"
+                >
+                  {isUnlocked ? (
+                    <Unlock className="h-4 w-4 mr-2" />
+                  ) : (
+                    <Lock className="h-4 w-4 mr-2" />
+                  )}
+                  {isUnlocked ? "Đã Mở Khóa" : "Mở Khóa"}
+                </Button>
 
-          <div className="flex flex-col gap-2">
-            {piece.unlocked ? (
-              <>
-                <Badge className={`${getBadgeColor(piece.color)} text-xs`}>Đã Mở Khóa</Badge>
-                <Link href={`/blog/${piece.blogId}`}>
-                  <Button size="sm" variant="outline" className="w-full gap-1 bg-transparent">
-                    <BookOpen className="h-3 w-3" />
-                    Đọc Blog
-                  </Button>
-                </Link>
-              </>
-            ) : (
-              <Button
-                size="sm"
-                variant="outline"
-                onClick={(e) => {
-                  e.stopPropagation()
-                  setShowQuestions(true)
-                }}
-                disabled={userProgress.cheatModeEnabled}
-              >
-                Mở Khóa
-              </Button>
-            )}
+                {/* Blog link */}
+                {isUnlocked && piece.blogId && (
+                  <Link 
+                    href={`/blog/${piece.blogId}`}
+                    className="flex items-center justify-center gap-2 text-blue-600 hover:text-blue-800 text-sm group"
+                  >
+                    <span>Đọc Blog</span>
+                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </Link>
+                )}
+              </div>
+            </div>
           </div>
         </CardContent>
       </Card>

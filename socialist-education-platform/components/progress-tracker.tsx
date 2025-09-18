@@ -62,7 +62,7 @@ export function ProgressTracker() {
                   className={`w-12 h-12 rounded-full mx-auto mb-2 flex items-center justify-center text-white font-bold transition-all duration-300 shadow-sm ${
                     piece.unlocked
                       ? piece.color === "knowledge-blue"
-                        ? "bg-blue-700 puzzle-unlock"
+                        ? "bg-primary puzzle-unlock"
                         : piece.color === "revolution-red"
                           ? "bg-red-700 puzzle-unlock"
                           : piece.color === "unity-purple"

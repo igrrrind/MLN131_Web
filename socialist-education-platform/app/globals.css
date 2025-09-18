@@ -3,6 +3,21 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@font-face {
+  font-family: "SVN-Gilroy";
+  src: url("/fonts/SVN-Gilroy Medium.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "SVN-Gilroy Bold";
+  src: url("/fonts/SVN-Gilroy Bold.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+
 :root {
   /* Updated color tokens to match socialist education theme */
   --background: #ffffff;
@@ -11,7 +26,7 @@
   --card-foreground: #1e3a8a;
   --popover: #ffffff;
   --popover-foreground: #1e3a8a;
-  --primary: #1e3a8a;
+  --primary: #1461d7;
   --primary-foreground: #ffffff;
   --secondary: #7c3aed;
   --secondary-foreground: #ffffff;
@@ -53,7 +68,7 @@
   --card-foreground: #f1f5f9;
   --popover: #1e293b;
   --popover-foreground: #f1f5f9;
-  --primary: #3b82f6;
+  --primary: #1c63d8;
   --primary-foreground: #ffffff;
   --secondary: #8b5cf6;
   --secondary-foreground: #ffffff;
@@ -170,4 +185,12 @@
 
 .puzzle-merge {
   animation: puzzle-merge 0.8s ease-out forwards;
+}
+
+.font-gilroy {
+  font-family: "SVN-Gilroy", sans-serif;
+}
+
+h1,h2,h3,h4,h5 {
+    font-family: "SVN-Gilroy Bold", sans-serif;
 }
