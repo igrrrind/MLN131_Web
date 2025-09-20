@@ -22,38 +22,42 @@ const initialPieces: PuzzlePiece[] = [
   {
     id: 1,
     title: "CQ1",
-    description: "Cơ sở khoa học của chủ nghĩa xã hội",
+    description:
+      "Vai trò của Cách mạng 4.0 trong xây dựng nền sản xuất XHCN hiện đại",
     color: "knowledge-blue",
     unlocked: false,
     questions: questionsData[1],
-    blogId: "foundations",
+    blogId: "cq-1",
   },
   {
     id: 2,
-    title: "Đấu Tranh Giai Cấp",
-    description: "Động lực phát triển xã hội",
+    title: "CQ2",
+    description:
+      "Tư tưởng Hồ Chí Minh và thực trạng thanh niên trong xây dựng con người XHCN",
     color: "revolution-red",
     unlocked: false,
     questions: questionsData[2],
-    blogId: "class-struggle",
+    blogId: "cq-2",
   },
   {
     id: 3,
     title: "CQ3",
-    description: "Sức mạnh của sự đoàn kết",
+    description:
+      "Bản chất lịch sử và sự kế thừa phát triển của dân chủ trong tiến trình xã hội",
     color: "unity-purple",
     unlocked: false,
     questions: questionsData[3],
-    blogId: "unity-solidarity",
+    blogId: "cq-3",
   },
   {
     id: 4,
-    title: "Vận Dụng Sáng Tạo",
-    description: "Áp dụng vào thực tiễn",
+    title: "CQ4",
+    description:
+      "Sự khác nhau về bản chất giữa dân chủ XHCN và dân chủ tư sản qua ví dụ thực tiễn",
     color: "progress-green",
     unlocked: false,
     questions: questionsData[4],
-    blogId: "global-application",
+    blogId: "cq-4",
   },
 ];
 

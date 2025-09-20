@@ -1,8 +1,8 @@
-import { Header } from "@/components/header"
-import { BlogList } from "@/components/blog-list"
-import { Button } from "@/components/ui/button"
-import { ArrowLeft } from "lucide-react"
-import Link from "next/link"
+import { Header } from "@/components/header";
+import { BlogList } from "@/components/blog-list";
+import { Button } from "@/components/ui/button";
+import { ArrowLeft } from "lucide-react";
+import Link from "next/link";
 
 export default function BlogPage() {
   return (
@@ -17,10 +17,12 @@ export default function BlogPage() {
           </Link>
 
           <div className="text-center mb-8">
-            <h1 className="text-4xl font-bold text-primary mb-4">Thư Viện Kiến Thức</h1>
+            <h1 className="text-4xl font-bold text-primary mb-4">
+              Thư Viện Kiến Thức
+            </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Khám phá các bài viết chuyên sâu về chủ nghĩa xã hội khoa học. Tất cả các bài viết đều có thể đọc tự do,
-              không cần mở khóa puzzle.
+              Khám phá các bài viết liên hệ thực tiễn về Dân chủ xã hội chủ
+              nghĩa và Nhà nước xã hội chủ nghĩa
             </p>
           </div>
         </div>
@@ -28,5 +30,5 @@ export default function BlogPage() {
         <BlogList />
       </main>
     </div>
-  )
+  );
 }
