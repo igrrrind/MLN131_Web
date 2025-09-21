@@ -20,7 +20,7 @@ export default function HomePage() {
       </div>
       <main className="container mx-auto px-4 py-8">
       <div className="text-center mb-12">
-        <h1 className={`text-4xl md:text-6xl font-bold text-gray-900 mb-6 text-balance uppercase leading-snug ${merriweather.className}`}>dân chủ xã hội chủ nghĩa & xây dựng Nhà nước pháp quyền xã hội chủ nghĩa ở Việt Nam</h1>
+        <h1 className={`text-4xl md:text-6xl font-bold text-gray-900 mb-6 text-balance uppercase leading-snug ${merriweather.className}`}>Phát huy dân chủ xã hội chủ nghĩa, xây dựng Nhà nước pháp quyền xã hội chủ nghĩa ở Việt Nam</h1>
         <p className="text-xl text-muted-foreground max-w-3xl mx-auto text-pretty">
         Khám phá và học hỏi về chủ nghĩa xã hội khoa học thông qua hệ thống puzzle tương tác. Mở khóa từng mảnh ghép
         để hiểu sâu hơn về lý thuyết và thực tiễn.
