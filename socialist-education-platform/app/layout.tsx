@@ -12,9 +12,8 @@ import { Be_Vietnam_Pro, Merriweather } from "next/font/google";
 
 
 export const metadata: Metadata = {
-  title: "v0 App",
-  description: "Created with v0",
-  generator: "v0.app",
+  title: "MLN131 XHCN Chap 4",
+  description: "MLN131 XHCN Chap 4",
 }
 
 const gilroy = localFont({

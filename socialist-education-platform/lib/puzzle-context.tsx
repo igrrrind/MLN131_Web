@@ -21,9 +21,9 @@ const PuzzleContext = createContext<PuzzleContextType | undefined>(undefined);
 const initialPieces: PuzzlePiece[] = [
   {
     id: 1,
-    title: "CQ1",
+    title: "Mảnh Ghép Chủ Đề CQ1. Nền sản xuất Việt Nam trong thời kỳ quá độ lên CNXH dưới tác động của Cách mạng công nghiệp 4.0”.",
     description:
-      "Vai trò của Cách mạng 4.0 trong xây dựng nền sản xuất XHCN hiện đại",
+      "Trong cuốn Góp phần phê phán khoa kinh tế chính trị học. C. Mác nhấn mạnh: “Cái cối quay bằng tay đưa lại xã hội có lãnh chúa; cái cối xay chạy bằng hơi nước đưa lại xã hội có nhà tư bản công nghiệp.” Đặt vào trong điều kiện của cuộc cách mạng công nghiệp 4.0 hãy phác thảo ra nền sản xuất ở Việt Nam trong thời kỳ quá độ lên chủ nghĩa xã hội (để luận chứng rằng nó đặt tiền đề tiến lên một xã hội ưu việt.).",
     color: "knowledge-blue",
     unlocked: false,
     questions: questionsData[1],
@@ -31,9 +31,9 @@ const initialPieces: PuzzlePiece[] = [
   },
   {
     id: 2,
-    title: "CQ2",
+    title: "Mảnh Ghép Chủ Đề CQ2. Tư tưởng Hồ Chí Minh và thực trạng thanh niên trong xây dựng con người XHCN",
     description:
-      "Tư tưởng Hồ Chí Minh và thực trạng thanh niên trong xây dựng con người XHCN",
+      "Tại Đại hội Đảng bộ thành phố Hà Nội, ngày 20 tháng 6 năm 1960, Chủ tịch Hồ Chí Minh nhấn mạnh: “Muốn xây dựng chủ nghĩa xã hội, phải có con người xã hội chủ nghĩa và có tư tưởng xã hội chủ nghĩa”. 1. Đặt mình vào vị thế là chủ nhân tương lai của đất nước hãy luận bàn về phương diện con người mới xã hội chủ nghĩa. 2. Nhận diện những lệch chuẩn trong suy nghĩ và hành động của giới trẻ hiện nay trong học tập và lao động.",
     color: "revolution-red",
     unlocked: false,
     questions: questionsData[2],
@@ -41,9 +41,9 @@ const initialPieces: PuzzlePiece[] = [
   },
   {
     id: 3,
-    title: "CQ3",
+    title: "Mảnh Ghép Chủ Đề CQ3. Bản chất lịch sử và sự kế thừa phát triển của dân chủ trong tiến trình xã hội",
     description:
-      "Bản chất lịch sử và sự kế thừa phát triển của dân chủ trong tiến trình xã hội",
+      "Vì sao nói dân chủ là một phạm trù lịch sử?",
     color: "unity-purple",
     unlocked: false,
     questions: questionsData[3],
@@ -51,9 +51,9 @@ const initialPieces: PuzzlePiece[] = [
   },
   {
     id: 4,
-    title: "CQ4",
+    title: "Mảnh Ghép Chủ Đề CQ4. Sự khác nhau về bản chất giữa dân chủ XHCN và dân chủ tư sản qua ví dụ thực tiễn",
     description:
-      "Sự khác nhau về bản chất giữa dân chủ XHCN và dân chủ tư sản qua ví dụ thực tiễn",
+      "Thông qua những ví dụ thực tiễn để chứng minh sự khác nhau về bản chất giũa dân chủ xã hội chủ nghĩa và dân chủ tư sản?",
     color: "progress-green",
     unlocked: false,
     questions: questionsData[4],

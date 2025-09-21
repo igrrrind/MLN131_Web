@@ -1,32 +1,35 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Card, CardContent } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { ArrowRight, Lock, Unlock } from "lucide-react"
-import { usePuzzle } from "@/lib/puzzle-context"
-import type { PuzzlePiece } from "@/lib/types"
-import { QuestionModal } from "./question-modal"
-import Link from "next/link"
-import Image from "next/image"
-import { merriweather } from "@/lib/fonts"
+import { useState } from "react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { ArrowRight, Lock, Unlock } from "lucide-react";
+import { usePuzzle } from "@/lib/puzzle-context";
+import type { PuzzlePiece } from "@/lib/types";
+import { QuestionModal } from "./question-modal";
+import Link from "next/link";
+import Image from "next/image";
+import { merriweather } from "@/lib/fonts";
 
 interface PuzzlePieceProps {
-  piece: PuzzlePiece
-  rotation?: number // Rotation angle in degrees
+  piece: PuzzlePiece;
+  rotation?: number; // Rotation angle in degrees
 }
 
-export function PuzzlePieceComponent({ piece, rotation = 0 }: PuzzlePieceProps) {
-  const [showQuestions, setShowQuestions] = useState(false)
-  const { userProgress } = usePuzzle()
+export function PuzzlePieceComponent({
+  piece,
+  rotation = 0,
+}: PuzzlePieceProps) {
+  const [showQuestions, setShowQuestions] = useState(false);
+  const { userProgress } = usePuzzle();
 
-  const isUnlocked = userProgress.unlockedPieces.includes(piece.id)
+  const isUnlocked = userProgress.unlockedPieces.includes(piece.id);
 
   return (
     <>
-      <Card 
+      <Card
         className="relative bg-transparent border-none hover:shadow-none shadow-none overflow-hidden cursor-pointer hover:shadow-lg transition-all duration-300"
-        onClick={() => !isUnlocked && setShowQuestions(true)}
+        // onClick={() => !isUnlocked && setShowQuestions(true)}
       >
         <CardContent className="p-4 w-full">
           <div className="flex gap-4">
@@ -44,39 +47,42 @@ export function PuzzlePieceComponent({ piece, rotation = 0 }: PuzzlePieceProps) 
 
             {/* Right side - Content */}
             <div className="flex-1">
-              <h3 className={`font-semibold text-lg  mb-2 ${merriweather.className}`}>{piece.title}</h3>
+              <h3
+                className={`font-semibold text-xl  mb-2 ${merriweather.className}`}
+              >
+                {piece.title}
+              </h3>
               <p className="text-sm text-gray-600 mb-4">{piece.description}</p>
-              
+
               {/* Unlock button */}
               <div className="space-y-2">
                 <Button
                   size="sm"
                   variant={isUnlocked ? "outline" : "default"}
                   onClick={(e) => {
-                    e.stopPropagation()
-                    !isUnlocked && setShowQuestions(true)
+                    e.stopPropagation();
+                    !isUnlocked && setShowQuestions(true);
                   }}
                   disabled={userProgress.cheatModeEnabled}
-                  className="w-full"
+                  className="w-full !h-16 text-base"
                 >
                   {isUnlocked ? (
                     <Unlock className="h-4 w-4 mr-2" />
                   ) : (
                     <Lock className="h-4 w-4 mr-2" />
                   )}
-                  {isUnlocked ? "Đã Mở Khóa" : "Mở Khóa"}
+                  {isUnlocked ? "Đã Mở Khóa" : "Giải Mã"}
                 </Button>
 
                 {/* Blog link */}
-                {isUnlocked && piece.blogId && (
-                  <Link 
-                    href={`/blog/${piece.blogId}`}
-                    className="flex items-center justify-center gap-2 text-blue-600 hover:text-blue-800 text-sm group"
-                  >
-                    <span>Đọc Blog</span>
-                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                  </Link>
-                )}
+
+                <Link
+                  href={`/blog/${piece.blogId}`}
+                  className="flex items-center justify-center gap-2 text-blue-600 hover:text-blue-800 text-lg py-6 group"
+                >
+                  <span>Tìm hiểu để giải mã</span>
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </Link>
               </div>
             </div>
           </div>
@@ -90,5 +96,5 @@ export function PuzzlePieceComponent({ piece, rotation = 0 }: PuzzlePieceProps) 
         onComplete={() => setShowQuestions(false)}
       />
     </>
-  )
+  );
 }

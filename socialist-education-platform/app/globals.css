@@ -194,3 +194,80 @@
 h1,h2,h3,h4,h5 {
     font-family: "SVN-Gilroy Bold", sans-serif;
 }
+
+
+.object-top-left {
+  object-position: top left;
+}
+
+
+
+.puzzle1 {
+  --r: 30px; /* control the circle radius */
+
+  width: var(--s);
+  height: calc(var(--s) + var(--r));
+  mask: 
+    radial-gradient(var(--r) at 50% calc(100% - var(--r)), #000 calc(100% - 1px), #0000), 
+    radial-gradient(var(--r) at right, #0000 calc(100% - 1px), #000) 0 0/100% calc(100% - var(--r)) no-repeat;
+  background: #1e3a8a;
+
+  /* Responsive sizing */
+  @media (min-width: 640px) {
+    width: var(--s-md);
+    height: calc(var(--s-md) + var(--r));
+  }
+}
+
+.puzzle2 {
+  --r: 30px; /* control the circle radius */
+
+  width: calc(var(--s) + var(--r));
+  height: var(--s);
+  mask: 
+    radial-gradient(var(--r) at var(--r) 50%, #000 calc(100% - 1px), #0000), 
+    radial-gradient(var(--r) at bottom, #0000 calc(100% - 1px), #000) 100%/calc(100% - var(--r)) 100% no-repeat;
+  background: #1e3a8a;
+  transform: translateX(-30px);
+
+  /* Responsive sizing */
+  @media (min-width: 640px) {
+    width: calc(var(--s-md) + var(--r));
+    height: var(--s-md);
+  }
+}
+
+.puzzle3 {
+  --r: 30px; /* control the circle radius */
+
+  width: calc(var(--s) + var(--r));
+  height: var(--s);
+  mask: 
+    radial-gradient(var(--r) at calc(100% - var(--r)) 50%, #000 calc(100% - 1px), #0000), 
+    radial-gradient(var(--r) at top, #0000 calc(100% - 1px), #000) 0/calc(100% - var(--r)) 100% no-repeat;
+  background: #1e3a8a;
+
+  /* Responsive sizing */
+  @media (min-width: 640px) {
+    width: calc(var(--s-md) + var(--r));
+    height: var(--s-md);
+  }
+}
+
+.puzzle4 {
+  --r: 30px; /* control the circle radius */
+
+  width: var(--s);
+  height: calc(var(--s) + var(--r));
+  mask: 
+    radial-gradient(var(--r) at 50% var(--r), #000 calc(100% - 1px), #0000), 
+    radial-gradient(var(--r) at left, #0000 calc(100% - 1px), #000) 100% 100%/100% calc(100% - var(--r)) no-repeat;
+  background: #1e3a8a;
+  transform: translateY(-30px);
+
+  /* Responsive sizing */
+  @media (min-width: 640px) {
+    width: var(--s-md);
+    height: calc(var(--s-md) + var(--r));
+  }
+}

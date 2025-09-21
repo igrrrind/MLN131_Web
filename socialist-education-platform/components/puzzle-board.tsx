@@ -13,7 +13,7 @@ export function PuzzleBoard() {
   const piece4 = pieces[3];
 
   return (
-    <div className="flex flex-col gap-12">
+    <div className="flex flex-col gap-12 py-20">
       <PuzzlePieceComponent key={piece1.id} piece={piece1} rotation={10} />
       <PuzzlePieceComponent key={piece2.id} piece={piece2} rotation={100} />
 
