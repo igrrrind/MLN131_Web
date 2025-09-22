@@ -33,7 +33,7 @@ export function UnifiedPicture() {
     >
       {/* Decorative Frame */}
       <motion.div
-        className="absolute inset-0 border-8 rounded-lg shadow-xl bg-amber-100/20 -m-4"
+        className="absolute inset-0 border-8 rounded-lg shadow-xl bg-amber-100/20 -m-4 max-w-[700px] max-h-[700px]"
         transition={{
           duration: 4,
           repeat: Infinity,
@@ -42,7 +42,7 @@ export function UnifiedPicture() {
       />
 
       {/* Main Image Container */}
-      <div className="relative w-full h-full rounded-lg overflow-hidden ">
+      <div className="relative w-full h-full rounded-lg max-w-[672px] max-h-[672px] overflow-hidden ">
         {/* Base Image (Blurred Background) */}
         <motion.div className="absolute inset-0">
           <Image
@@ -54,7 +54,7 @@ export function UnifiedPicture() {
         </motion.div>
 
         {/* Puzzle Pieces Grid */}
-        <div className="absolute inset-0 grid grid-cols-2 grid-rows-2 max-w-[672px]">
+        <div className="absolute inset-0 grid grid-cols-2 grid-rows-2 max-w-[672px] max-h-[672px]">
           {pieces.map((piece) => {
             const isUnlocked = userProgress.unlockedPieces.includes(piece.id)
             const pos = objectPositions[piece.id as keyof typeof objectPositions]
