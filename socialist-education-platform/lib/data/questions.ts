@@ -17,8 +17,8 @@ export const questionsData: Record<number, Question[]> = {
       options: [
         "Kinh tế thuần túy nhà nước",
         "Kinh tế thị trường định hướng xã hội chủ nghĩa",
-        "Kinh tế tư bản chủ nghĩa",
-        "Kinh tế kế hoạch hóa tập trung như trước đổi mới",
+        "Kinh tế kế hoạch hóa tập trung quan liêu bao cấp",
+        "Kinh tế tự cung tự cấp dựa chủ yếu vào nông nghiệp",
       ],
       correctAnswer: 1,
       explanation:
@@ -28,10 +28,10 @@ export const questionsData: Record<number, Question[]> = {
       id: "q1-3",
       question: "Vai trò của công nghệ 4.0 trong quá trình xây dựng CNXH ở Việt Nam là gì?",
       options: [
-        "Chỉ phục vụ giải trí",
-        "Tự động hóa, tăng năng suất, minh bạch hóa, hỗ trợ quản lý hiệu quả",
-        "Không có tác động",
-        "Chỉ gây ra thất nghiệp",
+         "Mở rộng thương mại điện tử và thúc đẩy dịch vụ số",
+          "Thúc đẩy tự động hóa, tăng năng suất, minh bạch hóa và hỗ trợ quản lý hiệu quả",
+          "Phát triển mạnh mẽ truyền thông, kết nối và tương tác xã hội",
+          "Nâng cao năng lực cạnh tranh của doanh nghiệp Việt Nam trên thị trường quốc tế",
       ],
       correctAnswer: 1,
       explanation:
@@ -53,10 +53,10 @@ export const questionsData: Record<number, Question[]> = {
       id: "q2-2",
       question: "Biểu hiện lệch chuẩn của một bộ phận giới trẻ hiện nay là gì?",
       options: [
-        "Sống vì tập thể",
+        "Quá bao dung",
         "Lối sống thực dụng, coi trọng vật chất, thiếu động lực học tập",
-        "Hăng hái lao động",
-        "Kết hợp hài hòa đức và tài",
+        "Nhiều chuyển hay đi hóng draama",
+        "Quá hoàn hảo",
       ],
       correctAnswer: 1,
       explanation:
@@ -73,7 +73,7 @@ export const questionsData: Record<number, Question[]> = {
         "Vì dân chủ luôn tồn tại trong mọi xã hội",
         "Vì dân chủ chỉ có ở chế độ tư bản",
         "Vì dân chủ xuất hiện, tồn tại và biến đổi theo điều kiện lịch sử – xã hội nhất định",
-        "Vì dân chủ không thay đổi theo thời gian",
+        "Vì dân chủ có từ rất lâu",
       ],
       correctAnswer: 2,
       explanation:

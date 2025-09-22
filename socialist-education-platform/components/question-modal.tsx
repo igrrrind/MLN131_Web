@@ -43,7 +43,7 @@ export function QuestionModal({ piece, isOpen, onClose, onComplete }: QuestionMo
   const handleNext = () => {
     if (isLastQuestion) {
       // Complete the puzzle piece if user got at least 1 correct answer
-      if (correctAnswers > 0) {
+      if (correctAnswers > 1) {
         unlockPiece(piece.id)
       }
       onComplete()
